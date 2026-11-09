@@ -1,0 +1,230 @@
+
+/* Configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #07111f, #102b46, #07111f);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.contenedor {
+    width: 100%;
+    max-width: 390px;
+}
+
+/* Calculadora */
+.calculadora {
+    background: #101d2d;
+    padding: 25px;
+    border-radius: 22px;
+    border: 1px solid rgba(0, 200, 255, 0.2);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+}
+
+/* Encabezado */
+.encabezado {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.encabezado h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #45d5ff,
+        #168cff,
+        #ffffff
+    );
+
+    background-size: 250% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: brilloTitulo 4s linear infinite;
+
+    filter: drop-shadow(0 0 8px rgba(69, 213, 255, 0.35));
+
+    position: relative;
+}
+
+/* Movimiento del brillo */
+@keyframes brilloTitulo {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 250% center;
+    }
+}
+
+/* Línea luminosa debajo del título */
+.encabezado h1::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 3px;
+    margin: 8px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        #168cff,
+        #45d5ff
+    );
+
+    border-radius: 10px;
+
+    animation: lineaTitulo 2s ease-in-out infinite alternate;
+}
+
+@keyframes lineaTitulo {
+    from {
+        width: 35px;
+        opacity: 0.5;
+    }
+
+    to {
+        width: 100px;
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .encabezado h1,
+    .encabezado h1::after {
+        animation: none;
+    }
+}
+
+.encabezado p {
+    color: #8ba6c1;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Pantalla */
+.pantalla {
+    background: #071321;
+    min-height: 110px;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.operacion {
+    color: #8ba6c1;
+    font-size: 17px;
+    min-height: 25px;
+    word-break: break-all;
+}
+
+.resultado {
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: bold;
+    word-break: break-all;
+    text-align: right;
+}
+
+/* Distribución de botones */
+.botones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* Estilo general de los botones */
+button {
+    height: 62px;
+    border: none;
+    border-radius: 13px;
+    background: #1c3045;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background: #294762;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Botones de funciones */
+.funcion {
+    background: #29445c;
+    color: #45d5ff;
+}
+
+/* Operadores */
+.operador {
+    background: #123e5a;
+    color: #45d5ff;
+}
+
+/* Botón igual */
+.igual {
+    background: #087da8;
+    color: #ffffff;
+}
+
+.igual:hover {
+    background: #099bcf;
+}
+
+/* Botón cero ocupa dos columnas */
+.cero {
+    grid-column: span 2;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    margin-top: 22px;
+}
+
+footer p {
+    color: #718ba5;
+    font-size: 11px;
+}
+
+/* Adaptación a celulares */
+@media (max-width: 400px) {
+    .calculadora {
+        padding: 18px;
+    }
+
+    button {
+        height: 56px;
+        font-size: 19px;
+    }
+
+    .resultado {
+        font-size: 29px;
+    }
+}
